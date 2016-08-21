@@ -34,6 +34,8 @@
         <label>Description</label>
       </div>
       <button class="mui-btn mui-btn--raised  mui-btn--small mui-btn--primary" (click)="submit()"  type="submit" [disabled]="!meetupForm.valid" id="meetup-submit" color="primary" type="">Submit</button>
+       <button [routerLink]="['/meetup/list']" class="mui-btn mui-btn--raised  mui-btn--small mui-btn--warn"   type="submit" >Submit</button>
+
     </form>
 
   </md-card-content>
