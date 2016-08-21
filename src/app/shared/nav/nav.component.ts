@@ -5,7 +5,7 @@ import {
   AuthService
 } from '../shared-module';
 
-let logo = require('public/img/logo.svg');
+let logo = 'img/logo.svg';
 
 @Component({
   selector: 'my-nav',

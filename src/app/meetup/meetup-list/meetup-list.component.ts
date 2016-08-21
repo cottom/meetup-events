@@ -6,7 +6,7 @@ import { Meetup } from '../meetup.service';
 
 import { AuthService} from '../../shared';
 
-let defaultImgUrl = require('public/img/default-meetup-img.png');
+let defaultImgUrl = 'img/default-meetup-img.png';
 
 @Component({
   templateUrl: './meetup-list.component.html',

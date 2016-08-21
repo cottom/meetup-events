@@ -4,7 +4,7 @@ import { MeetUpService, Meetup } from '../meetup.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
 
-let detailImg = require('public/img/default-detail-bg.png');
+let detailImg = 'img/default-detail-bg.png';
 
 @Component({
   templateUrl: './meetup-detail.component.html',
