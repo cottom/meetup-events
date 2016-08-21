@@ -73,6 +73,9 @@ a:hover {
   height: 100%;
   z-index: 1000;
   background: #1abc9c;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   .spinner {
     background: #1abc9c;
     margin: 100px auto;
@@ -108,6 +111,9 @@ a:hover {
 }
 
 #loading-holder {
+  display: flex;
+  justify-content: center;
+  align-content: center;
   position: fixed;
   top: 0;
   left: 0;
