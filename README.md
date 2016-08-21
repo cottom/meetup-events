@@ -14,3 +14,7 @@ npm start
 ```
 
 open `http://localhost:8080`
+
+
+account:`jerry_ii@outlook.com`
+password: `123456`
