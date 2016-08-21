@@ -1,0 +1,20 @@
+<section class="meetups-list-container">
+  <md-card *ngFor="let item of meetups">
+    <md-card-title-group>
+      <md-card-title>{{item.name}}</md-card-title>
+      <img [src]="item.imageUrl" alt="meet-up-picture" md-card-md-image>
+    </md-card-title-group>
+    <md-card-content>
+      <p>Type: {{ item.type }}</p>
+      <p>Host: {{ item.host }}</p>
+      <p>Start Time:{{ item.startTime | date: 'yyyy/MM/dd'}}</p>
+      <p>End Time:{{ item.endTime | date:'yyyy/MM/dd' }}</p>
+    </md-card-content>
+    <md-card-actions>
+      <button class="mui-btn mui-btn--raised  mui-btn--small mui-btn--primary"  (click)="detail(item.$key)" >Detail</button>
+      <button class="mui-btn mui-btn--raised mui-btn--small mui-btn--accent"  (click)="edit(item.$key)"  *ngIf="item.right">Edit</button>
+      <button class="mui-btn mui-btn--raised mui-btn--small mui-btn--danger"  (click)="delete(item.$key)"  *ngIf="item.right">Delete</button>
+    </md-card-actions>
+  </md-card>
+  <button (click)="add()" class="mui-btn mui-btn--large mui-btn--primary mui-btn--fab btn-add">+</button>
+</section>

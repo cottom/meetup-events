@@ -1,0 +1,19 @@
+.meetups-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+md-card {
+  min-width: 300px;
+  margin: 10px;
+}
+section{
+  position: relative;
+}
+
+.btn-add{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}

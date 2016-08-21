@@ -5,7 +5,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "jsx":"react"
   },
   "compileOnSave": false,
   "buildOnSave": false

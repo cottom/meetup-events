@@ -1,24 +1,43 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-
-import { ApiService } from './shared';
-
 import '../style/app.scss';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ROUTER_DIRECTIVES
+} from '@angular/router';
 
-/*
- * App Component
- * Top Level Component
- */
+import {
+  FooterComponent
+} from './shared';
+
+import {
+  ProgressBarService,
+  InitSpinner
+} from './shared';
+
+
 @Component({
   selector: 'my-app', // <my-app></my-app>
-  providers: [ApiService],
-  directives: [...ROUTER_DIRECTIVES],
-  templateUrl: './app.component.html',
+  providers: [],
+  directives: [...ROUTER_DIRECTIVES, FooterComponent],
+  template: `
+    <md-progress-bar mode="indeterminate" *ngIf="progressBarService.showflag"
+                   class="progress-bar-margins"></md-progress-bar>
+    <router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
+export class AppComponent implements OnInit {
+  ngOnInit() {
 
-  constructor(private api: ApiService) {
+  }
+  constructor(
+    public progressBarService: ProgressBarService,
+    public initSpinner: InitSpinner) {
+
+  }
+
+  public ngAfterViewInit(): void {
+    this.initSpinner.hide();
   }
 }

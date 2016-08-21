@@ -1,0 +1,15 @@
+<header class="">
+  <div class="icon-header">
+    <a href="#"  ><img id="logo"  [src]='logoUrl' alt=""></a>
+  </div>
+  <div class="profile">
+    <span class="welcome">welcome {{ authService.user.email}}</span>
+    <a class="profile-toggle-link dropdown-toggle" (click)='toggledDrop()'>
+    <i  class="fa fa-user fa-3x" aria-hidden="true"></i>
+    </a>
+    <div [style.display]="showPan?'block' : 'none'" aria-labelledby="user-profile-dd" class="dropdown-menu top-dropdown-menu profile-dropdown">
+        <li class="dropdown-item"><i class="dropdown-arr"></i></li>
+        <li class="dropdown-item"><a class="signout" (click)="authService.logout()" href=""><i class="fa fa-power-off"></i>Sign out</a></li>
+      </div>
+  </div>
+</header>

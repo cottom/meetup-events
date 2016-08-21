@@ -1,0 +1,23 @@
+<div class="meetup-detail">
+  <md-card>
+    <img md-card-image [src]="meetup.detailImage">
+    <md-card-title>{{meetup.name}}</md-card-title>
+    <md-card-content>
+      <p><i class=""></i> Begin At: {{meetup.startTime | date:'yyyy/MM/dd hh:mm'}}</p>
+      <p><i class=""></i> End At: {{meetup.endTime | date:'yyyy/MM/dd hh:mm'}}</p>
+      <p><i class=""></i> Type: {{meetup.type}}</p>
+      <p><i class=""></i> Host: {{meetup.host}}</p>
+      <p><i class=""></i> Guestlist: {{meetup.guestList}}</p>
+      <p><i class=""></i> Description: {{meetup.description}}</p>
+    </md-card-content>
+
+
+    <md-card-actions align="end">
+      <button class="mui-btn mui-btn--raised mui-btn--small mui-btn--accent" (click)="edit()" *ngIf="meetup.right">Edit</button>
+      <button class="mui-btn mui-btn--raised mui-btn--small mui-btn--danger" (click)="delete()" *ngIf="meetup.right">Delete</button>
+
+      <button routerLink="/meetup"  class="back-btn mui-btn mui-btn--raised mui-btn--small mui-btn--primary">BACK TO LIST </button>
+
+    </md-card-actions>
+  </md-card>
+</div>

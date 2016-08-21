@@ -14,6 +14,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
  * Get npm lifecycle event to identify the environment
  */
 var ENV = process.env.npm_lifecycle_event;
+console.log('--------------' + ENV)
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
@@ -66,7 +67,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.resolve = {
     cache: !isTest,
-    root: root(),
+    root: root(''),
     // only discover files that have those extensions
     extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
     alias: {
@@ -82,7 +83,10 @@ module.exports = function makeWebpackConfig() {
    * This handles most of the magic responsible for converting modules
    */
   config.module = {
-    preLoaders: isTest ? [] : [{test: /\.ts$/, loader: 'tslint'}],
+    preLoaders: isTest ? [] : [{
+      test: /\.tsx?$/,
+      loader: 'tslint'
+    }],
     loaders: [
       // Support for .ts files.
       {
@@ -91,11 +95,29 @@ module.exports = function makeWebpackConfig() {
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
+      {
+        test: /\.tsx$/,
+        loader: "ts-loader"
+      },
+
       // copy those assets to output
-      {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?'},
+      // {
+
+      // }, {
+      //   test: /\.(svg|ttf|eot|woff|woff2|ico)$/,
+      //   loader: 'file-loader?name=asset/images/[name].[ext]'
+      // },
+      {
+        test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+        loader: 'file-loader?limit=50000&name=[path][name].[ext]'
+      },
+
 
       // Support for *.json files.
-      {test: /\.json$/, loader: 'json'},
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
 
       // Support for CSS as raw text
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
@@ -106,22 +128,33 @@ module.exports = function makeWebpackConfig() {
         loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.css$/, include: root('src', 'app'), loader: 'raw!postcss'},
+      {
+        test: /\.css$/,
+        include: root('src', 'app'),
+        loader: 'raw!postcss'
+      },
 
       // support for .scss files
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
       // all css in src/style will be bundled in an external css file
       {
-        test: /\.scss$/,
+        test: /app\.scss$/,
         exclude: root('src', 'app'),
         loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw!postcss!sass'},
+      {
+        test: /\.scss$/,
+        exclude: root('src', 'style'),
+        loader: 'raw!postcss!sass'
+      },
 
       // support for .html as raw text
       // todo: change the loader to something that adds a hash to images
-      {test: /\.html$/, loader: 'raw'}
+      {
+        test: /\.html$/,
+        loader: 'raw'
+      }
     ],
     postLoaders: [],
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -181,7 +214,9 @@ module.exports = function makeWebpackConfig() {
       // Extract css files
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('css/[name].[hash].css', {disable: !isProd})
+      new ExtractTextPlugin('css/[name].[hash].css', {
+        disable: !isProd
+      })
     );
   }
 
@@ -198,7 +233,16 @@ module.exports = function makeWebpackConfig() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        beautify: false, //prod
+        mangle: {
+          screw_ie8: true
+        }, //prod
+        compress: {
+          screw_ie8: true
+        }, //prod
+        comments: false //prod
+      }),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin

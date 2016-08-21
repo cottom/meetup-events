@@ -1,0 +1,20 @@
+.mdl-layout__header {
+  background-color: #fff;
+  color: mediumseagreen;
+  & #logo {
+    width: 200px;
+    margin: auto;
+  }
+  @media screen and (max-width:300px) {
+    & #logo {
+      width: 150px;
+    }
+  }
+  h3 {
+    margin-left: 20px;
+  }
+}
+
+.icon-header {
+  text-align: center;
+}

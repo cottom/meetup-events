@@ -1,0 +1,41 @@
+<md-card class="form-card">
+  <md-toolbar *ngIf="!meetup.$key" color="primary">NEW MEETUP</md-toolbar>
+  <md-toolbar *ngIf="meetup.$key" color="primary">EDIT MEETUP</md-toolbar>
+  <md-card-content>
+    <form class="meetup-form" [formGroup]="meetupForm">
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.name.invalid}" formControlName="name" name="name" id="meetup-name" class="input-full" placeholder="Meetup Name*">
+        <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.name}">{{errorMessages.name}}</md-hint>
+      </md-input>
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.startTime.invalid}" class="form-time" id="meetup-start-time" [formControl]="meetupForm.controls['startTime']" value="new Date()" placeholder="Start Time*" type="date"></md-input>
+      <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.startTime}">{{errorMessages.startTime}}</md-hint>
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.endTime.invalid}" class="form-time" id="meetup-end-time" formControlName="endTime" value="new Date()" placeholder="End Time*" type="date"></md-input>
+      <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.endTime}">{{errorMessages.endTime}}</md-hint>
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.host.invalid}" id="meetup-host" placeholder="Host*" formControlName="host" class="input-full">
+        <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.host}">{{errorMessages.host}}</md-hint>
+      </md-input>
+
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.guestList.invalid}" id="meetup-guest" placeholder="Guest List*" formControlName="guestList" class="input-full">
+        <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.guestList}">{{errorMessages.guestList}}</md-hint>
+      </md-input>
+
+      <md-input [ngClass]="{'warn-input': meetupForm.controls.location.invalid}" id="meetup-location" placeholder="Location*" formControlName="location" class="input-full">
+        <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.location}">{{errorMessages.location}}</md-hint>
+      </md-input>
+
+      <md-radio-group formControlName="type" class="meet-up-events input-full">
+        <label for="" color="primary">Type:    </label>
+        <md-radio-button *ngFor="let type of eventTypes" [value]="type">
+          {{type}}
+        </md-radio-button>
+      </md-radio-group>
+
+      <div [ngClass]="{'warn-input': meetupForm.controls.description.invalid}" class="mui-textfield mui-textfield--float-label">
+        <textarea formControlName="description"></textarea>
+        <label>Description</label>
+      </div>
+      <button class="mui-btn mui-btn--raised  mui-btn--small mui-btn--primary" (click)="submit()"  type="submit" [disabled]="!meetupForm.valid" id="meetup-submit" color="primary" type="">Submit</button>
+    </form>
+
+  </md-card-content>
+
+</md-card>

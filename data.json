@@ -1,0 +1,135 @@
+{
+  "user":[
+    {
+      "uid":"1",
+      "name":"jerry",
+      "email":"jerry_ii@outlook.com",
+      "password":"test"
+    }
+  ],
+  "meetup": {
+    "1": {
+      "id": "1",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "description": "this is the description",
+      "guestList": ["jerry", "Tom"]
+    },
+    "2": {
+      "id": "2",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "description": "this is the description",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"]
+    },
+    "3": {
+      "id": "3",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "description": "this is the description",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"]
+    },
+    "4": {
+      "id": "4",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "description": "this is the description",
+      "guestList": ["jerry", "Tom"]
+    },
+    "5": {
+      "id": "5",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "6": {
+      "id": "6",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "7": {
+      "id": "7",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "8": {
+      "id": "8",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "9": {
+      "id": "9",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "10": {
+      "id": "10",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    },
+    "11": {
+      "id": "11",
+      "uid": "1",
+      "name": "test meeting",
+      "type": "homework",
+      "host": "jhon",
+      "startTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "endTime": "Tue Aug 16 2016 09:50:42 GMT+0800 (CST)",
+      "guestList": ["jerry", "Tom"],
+      "description": "this is the description"
+    }
+  }
+
+
+}

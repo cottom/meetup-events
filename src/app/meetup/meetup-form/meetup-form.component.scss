@@ -1,0 +1,37 @@
+md-card-content {
+  font-size: 16px;
+}
+
+.form-card {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+md-card-content {
+  margin-top: 10px;
+}
+
+.meet-up-events {
+  display: block;
+  width: 100%;
+  md-radio-button {
+    margin-right: 10px;
+  }
+}
+
+md-input {
+  margin-bottom: 16px;
+}
+
+md-radio-group {
+  margin-bottom: 16px;
+  label {
+    margin-right: 10px;
+  }
+}
+
+.form-time {
+  width: calc(50% - 4px)
+}
+
+
