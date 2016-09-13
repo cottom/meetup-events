@@ -2,9 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { ValidationService} from '../shared';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
 import { AuthService, ProgressBarService } from '../shared';
-
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 @Component({
   templateUrl: './sign.component.html',
   styleUrls: ['./sign.component.scss'],
@@ -14,10 +13,10 @@ export class SignComponent implements OnInit {
   signInForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private toastr: ToastsManager,
     private authService: AuthService,
     private router: Router,
-    private progressBarService: ProgressBarService) {}
+    private progressBarService: ProgressBarService,
+    private toastr: ToasterService) {}
 
   get signUpErrorMessages(): Object{
      return this.getErrorMessage(this.signUpForm);
@@ -46,13 +45,14 @@ export class SignComponent implements OnInit {
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, ValidationService.emailValidator]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, ValidationService.passwordValidator]]
     });
 
     this.signUpForm = this.formBuilder.group({
       email: ['', [Validators.required, ValidationService.emailValidator]],
       password: ['', [Validators.required, ValidationService.passwordValidator]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      company: ['']
     }, {
       validator: ValidationService.matchingPasswords('password', 'confirmPassword')
     });
@@ -67,13 +67,13 @@ export class SignComponent implements OnInit {
         this.progressBarService.componentLoading();
         console.log(data);
         firebase.auth().currentUser.sendEmailVerification().then(() => {
-          this.toastr.success('Email Verification Sented!', 'success');
+          this.toastr.pop('success', 'Successful', 'Email Verification Sent Success!');
         }, () => {
-          this.toastr.error('Email Verification Sent fail!', 'fail');
+          this.toastr.pop('error', 'fail', 'Email Verification Sent fail!');
         });
       }).catch((error) => {
         this.progressBarService.componentLoading();
-        this.toastr.error(error['message'], 'error');
+        this.toastr.pop('error',  'error', error['message']);
       });
   }
 
@@ -85,11 +85,11 @@ export class SignComponent implements OnInit {
        .then((date) => {
          this.progressBarService.componentLoading();
           if (!date.emailVerified) {
-              this.toastr.warning('Please validator you email', 'fail');
+              this.toastr.pop('error',  'fail', 'Please validator you email');
               return;
           }
           this.authService.user = firebase.auth().currentUser;
-          this.toastr.success('Success login', 'success');
+          this.toastr.pop('success', 'success', 'Success login');
           if (this.authService.redirectUrl) {
             this.router.navigate([this.authService.redirectUrl]);
           }else {
@@ -99,9 +99,9 @@ export class SignComponent implements OnInit {
        .catch((error) => {
          this.progressBarService.componentLoading();
          if (error['code'] === 'auth/wrong-password') {
-           this.toastr.error('Wrong password or email', 'fail');
+           this.toastr.pop('error', 'Fail', 'Wrong password or email');
          }else {
-           this.toastr.error(error['message'], 'error');
+           this.toastr.pop('error', 'error', error['message']);
          }
        });
   }

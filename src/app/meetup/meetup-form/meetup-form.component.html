@@ -3,7 +3,7 @@
   <md-toolbar *ngIf="meetup.$key" color="primary">EDIT MEETUP</md-toolbar>
   <md-card-content>
     <form class="meetup-form" [formGroup]="meetupForm">
-      <md-input [ngClass]="{'warn-input': meetupForm.controls.name.invalid}" formControlName="name" name="name" id="meetup-name" class="input-full" placeholder="Meetup Name*">
+      <md-input [autofocus]="true" [ngClass]="{'warn-input': meetupForm.controls.name.invalid}" formControlName="name" name="name" id="meetup-name" class="input-full" placeholder="Meetup Name*">
         <md-hint align="start" [ngClass]="{'warning-tip': errorMessages.name}">{{errorMessages.name}}</md-hint>
       </md-input>
       <md-input [ngClass]="{'warn-input': meetupForm.controls.startTime.invalid}" class="form-time" id="meetup-start-time" [formControl]="meetupForm.controls['startTime']" value="new Date()" placeholder="Start Time*" type="date"></md-input>
@@ -30,8 +30,8 @@
       </md-radio-group>
 
       <div [ngClass]="{'warn-input': meetupForm.controls.description.invalid}" class="mui-textfield mui-textfield--float-label">
-        <textarea formControlName="description"></textarea>
-        <label>Description</label>
+        <textarea id="meetup-event-description" formControlName="description"></textarea>
+        <label for="meetup-event-description">Description</label>
       </div>
       <button class="mui-btn mui-btn--raised  mui-btn--small mui-btn--primary" (click)="submit()"  type="submit" [disabled]="!meetupForm.valid" id="meetup-submit" color="primary" type="">Submit</button>
        <button [routerLink]="['/meetup/list']" class="mui-btn mui-btn--raised  mui-btn--small mui-btn--danger"   type="submit" >Give Up</button>

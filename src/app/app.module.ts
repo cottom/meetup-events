@@ -8,6 +8,7 @@ import {routing } from './app.routing';
 import { SignModule } from './sign';
 import { MeetUpModule } from './meetup';
 
+import { ToasterModule } from 'angular2-toaster/angular2-toaster';
 
 
 import { SharedModule } from './shared/shared-module';
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared-module';
 @NgModule({
   imports: [
     BrowserModule,
+    ToasterModule,
     SharedModule.forRoot(),
     routing,
     HttpModule,

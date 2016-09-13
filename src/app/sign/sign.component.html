@@ -6,9 +6,9 @@
       <md-tab>
         <template style="width:50%" md-tab-label>Sign In</template>
         <template md-tab-content>
-          <form class="sign-form"  [formGroup]="signInForm">
+          <form  class="sign-form"  [formGroup]="signInForm">
 
-            <md-input [ngClass]="{'warn-input': signInForm.controls.email.invalid}" formControlName="email" id="signup-email"  class="input-full"  placeholder="Email">
+            <md-input [autofocus]="true" [autocomplete]="'on'" [ngClass]="{'warn-input': signInForm.controls.email.invalid}" formControlName="email" id="signup-email"  class="input-full"  placeholder="Email">
                <md-hint align="start" [ngClass]="{'warning-tip': signInErrorMessages.email}">{{signInErrorMessages.email}}</md-hint>
             </md-input>
             <md-input type="password" [ngClass]="{'warn-input': signInForm.controls.password.invalid}" formControlName="password" id="signup-password" class="input-full" placeholder="Password" >
@@ -27,7 +27,7 @@
               <!--<md-input [ngClass]="{'warn-input': signUpForm.controls.username.invalid}" formControlName="username"  id="sign-up-username"  class="input-full" placeholder="username*">
                  <md-hint align="start" [ngClass]="{'warning-tip': signUpErrorMessages.username}">{{signUpErrorMessages.username}}</md-hint>
               </md-input>-->
-              <md-input type="text" [ngClass]="{'warn-input': signUpForm.controls.email.invalid}" formControlName="email" id="sign-up-email" class="input-full" placeholder="email*">
+              <md-input [autocomplete]="'on'"  [autofocus]="true" type="text" [ngClass]="{'warn-input': signUpForm.controls.email.invalid}" formControlName="email" id="sign-up-email" class="input-full" placeholder="email*">
                  <md-hint align="start" [ngClass]="{'warning-tip': signUpErrorMessages.email}">{{signUpErrorMessages.email}}</md-hint>
               </md-input>
               <md-input type="password" [ngClass]="{'warn-input': signUpForm.controls.password.invalid}" formControlName="password" id="sign-up-password" class="input-full" placeholder="password*">
@@ -35,6 +35,8 @@
               </md-input>
               <md-input type="password" [ngClass]="{'warn-input': signUpErrorMessages.password||signUpErrorMessages.confirmPassword ||signUpForm.errors&&signUpForm.errors.mismatchPasswords }" formControlName="confirmPassword" id="sign-up-comfirm-password" class="input-full" placeholder="confirm password*">
                  <md-hint align="start" class="warning-tip" *ngIf="signUpForm.errors&&signUpForm.errors.mismatchPasswords">Confirm your password!</md-hint>
+              </md-input>
+              <md-input type="text"  formControlName="company" id="sign-up-company" class="input-full" placeholder="your company">
               </md-input>
               <button (click)="signUpSubmit()" [disabled]="!signUpForm.valid"  [disabled]="" md-raised-button color="primary" type="">SIGN UP</button>
               <button md-raised-button type="rest" color="accent" type="">RESET</button>

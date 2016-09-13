@@ -3,9 +3,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import {
-  ROUTER_DIRECTIVES
-} from '@angular/router';
 
 import {
   FooterComponent
@@ -20,8 +17,8 @@ import {
 @Component({
   selector: 'my-app', // <my-app></my-app>
   providers: [],
-  directives: [...ROUTER_DIRECTIVES, FooterComponent],
   template: `
+    <toaster-container></toaster-container>
     <md-progress-bar mode="indeterminate" *ngIf="progressBarService.showflag"
                    class="progress-bar-margins"></md-progress-bar>
     <router-outlet></router-outlet>`,

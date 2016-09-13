@@ -13,7 +13,7 @@ import { ProgressBarService } from './progress-bar.service';
 import { InitSpinner } from './init-spinner.service';
 import {ValidationService} from './form-validate-module';
 
-import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
+
 import { DialogService } from './dialog.service';
 @NgModule({
   imports: [],
@@ -40,7 +40,6 @@ export class SharedModule {
         ProgressBarService,
         InitSpinner,
         ValidationService,
-        ToastsManager,
         DialogService]
     };
   }

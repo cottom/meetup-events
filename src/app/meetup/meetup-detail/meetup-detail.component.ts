@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { MeetUpService, Meetup } from '../meetup.service';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 let detailImg = 'img/default-detail-bg.png';
 
@@ -15,7 +15,7 @@ export class MeetUpDetailComponent implements OnInit {
   constructor(
     public ms: MeetUpService,
     private route: ActivatedRoute,
-    private toastr: ToastsManager,
+    private toastr: ToasterService,
     private router: Router) {}
 
   ngOnInit() {
@@ -29,10 +29,10 @@ export class MeetUpDetailComponent implements OnInit {
   delete() {
     if (window.confirm('if you really want to delete this meetup')) {
        this.ms.deleteMeetUp(this.meetup.$key).then(() => {
-        this.toastr.success('successfully deleted', 'Success');
+        this.toastr.pop( 'success', 'Success', 'successfully deleted');
           this.router.navigate(['/meetup/list']);
        }, () => {
-         this.toastr.error('fail to delete', 'fail');
+         this.toastr.pop('error', 'fail', 'fail to delete');
        });
     }
   }

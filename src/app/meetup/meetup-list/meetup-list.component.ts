@@ -1,7 +1,7 @@
 import { Component,  OnInit } from '@angular/core';
 import {  MeetUpService} from '../meetup.service';
 import {  Router,  ActivatedRoute} from '@angular/router';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
+import { ToasterService} from 'angular2-toaster/angular2-toaster';
 import { Meetup } from '../meetup.service';
 
 import { AuthService} from '../../shared';
@@ -19,7 +19,7 @@ export class MeetUpListComponent implements OnInit {
     public meetupService: MeetUpService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastsManager) {}
+    private toastr: ToasterService) {}
 
   ngOnInit() {
     this.route.data.forEach((data: {
@@ -46,7 +46,7 @@ export class MeetUpListComponent implements OnInit {
   delete(id) {
     if ( window.confirm('Do you really want to delete it?')) {
       this.meetupService.deleteMeetUp(id).then(() => {
-        this.toastr.success('successfully deleted', 'Success');
+        this.toastr.pop('success', 'Success', 'successfully deleted');
         this.router.navigate(['meetup']);
       });
     }

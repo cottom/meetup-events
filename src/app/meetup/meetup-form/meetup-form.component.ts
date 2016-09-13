@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr.ts';
+import { ToasterService} from 'angular2-toaster/angular2-toaster';
 import { Observable }     from 'rxjs/Observable';
 
 
@@ -13,8 +13,7 @@ import { DialogService } from '../../shared';
 
 @Component({
   templateUrl: './meetup-form.component.html',
-  styleUrls: ['./meetup-form.component.scss'],
-  directives: []
+  styleUrls: ['./meetup-form.component.scss']
 })
 export class MeetUpFormComponent implements OnInit {
   meetup: Meetup;
@@ -27,7 +26,7 @@ export class MeetUpFormComponent implements OnInit {
     private ms: MeetUpService,
     private auth: AuthService,
     private router: Router,
-    private toastr: ToastsManager,
+    private toastr: ToasterService,
     private ps: ProgressBarService,
     private dialogService: DialogService) {
   }
@@ -49,8 +48,6 @@ export class MeetUpFormComponent implements OnInit {
   ngOnInit() {
     if (/add/.test(this.route.toString())) {
       this.meetup = new Meetup();
-      this.meetup.startTime = new Date();
-      this.meetup.endTime = new Date();
       this.submit = this.newSubmit;
       this.meetup.uid = this.auth.user.uid;
     }else {
@@ -94,14 +91,14 @@ export class MeetUpFormComponent implements OnInit {
     this.ps.loadding();
     this.ms.addMeetUp(this.meetup).then(() => {
       this.ps.componentLoading();
-      this.toastr.success('successfully added', 'success');
+      this.toastr.pop('success', 'success', 'successfully added');
       this.router.navigate(['/meetup/list']);
     }, () => {
       this.ps.componentLoading();
-      this.toastr.error('fail to submit', 'fail');
+      this.toastr.pop('error', 'fail to submit', 'fail');
     }).catch(() => {
       this.ps.componentLoading();
-      this.toastr.error('fail to submit', 'fail');
+      this.toastr.pop('error', 'fail to submit', 'fail');
     });
   }
 
@@ -110,15 +107,15 @@ export class MeetUpFormComponent implements OnInit {
     this.ps.loadding();
     this.ms.upDateMeetUp(this.meetup).then(() => {
       this.ps.componentLoading();
-      this.toastr.success('successfully updated', 'success');
+      this.toastr.pop('success', 'successfully updated', 'success');
       this.router.navigate(['/meetup/list']);
     },
     () => {
       this.ps.componentLoading();
-      this.toastr.error('fail to submit', 'fail');
+      this.toastr.pop('error', 'fail to submit', 'fail');
     }).catch(() => {
       this.ps.componentLoading();
-      this.toastr.error('fail to submit', 'fail');
+      this.toastr.pop('error', 'fail to submit', 'fail');
     });
   }
 
